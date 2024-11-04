@@ -127,7 +127,7 @@ El llamado a `demultiplexer.watch()` es sincrónico y se bloquea hasta que cualq
 
 Es interesante ver que éste patron ahora puede manejar multiples operaciones `I/O` dentro de un hilo, sin usar la técnica `busy-waiting`. Ahora con el uso del demultiplexor, usando sólo un hilo podemos lidear con muchos recursos.
 
-![servidor single-thead](/img/servidor_single_thread.png)
+![servidor single-thead](img/servidor_single_thread.png)
 
 se puede ver en la ilustración anterior que usando sólo un hilo se puede manejar múltiples operaciones `I/O` de manera concurrente. Las tareas son esparcidas en el tiempo, en vez de ser esparcidas en múltiples hilos y se minimiza el tiempo de espera.
 
