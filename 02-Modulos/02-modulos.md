@@ -204,3 +204,46 @@ module.exports.run = () => {
 > [!NOTE]
 > En CommonJS todo es privado a menos que sea asignado a la variable module.exports. El contenido de la variable es asignado a la caché y luego retornado cuando el módulo es cargad usando `require()`
 
+## Diferencia entre `module.exports` y `exports`
+
+Si no estás familiarizado con Node.js la diferencia entre `module.exports` y `exports` confunde al momento de exponer un API público.
+
+`exports` es la variable que referencia el valor inicial de `module.exports`, lo que significa que si queremos agregar nuevas propiedades al objeto referenciado por la variable `exports` se hace de la siguiente manera: 
+
+```javascript
+exports.hello = () => console.log('Hello')
+```
+
+Reasignar la variable `exports` no tendrá un efecto, porque no cambia el conontenido de `module.exports`, por lo tanto el siguiente código está mal:
+
+```javascript
+// Codigo malo 🙅
+exports = () => console.log('Hello')
+```
+
+Si queremos exportar otra cosa distinta que el objeto literal, como una función, una instancia o un string, se tiene que reasignar `module.exports` de la siguiente forma:
+
+```javascript
+module.exports = () => console.log('Hello')
+```
+
+## Sincronía de la función `require`
+
+Un aspecto importante a considerar es que la función `require()` es sincrónica! De hecho, retorna el contenido del módulo sin usar callbacks.
+
+Como consecuencia cualquier asignación a `module.exports` debe ser sincrónico.
+
+> [!CAUTION]
+> Dada la sincronía de require, el siguiente código causará problemas.
+> ```javascript
+>   setTimeout(() => {
+>     module.exports = function() {...}
+>   }, 100)
+>  ```
+
+La naturaleza sincónica de `require()` tiene repercusiones en la forma que se definen los módulos, lo que nos limita a usar principalmente código sincrónico al momento de la definición.
+
+> [!NOTE]
+> Esta es la razón por la que las librerías del núcleo de Node ofrecen alternativas asincrónicas para la mayoría de los elementos sincrónicos de sus API
+
+
