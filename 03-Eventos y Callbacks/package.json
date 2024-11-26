@@ -1,0 +1,11 @@
+{
+  "name": "03-eventos-y-mensajes",
+  "version": "1.0.0",
+  "description": "Eventos I/O en equipo y mensajes",
+  "main": "duplica.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

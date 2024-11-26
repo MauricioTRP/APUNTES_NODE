@@ -42,8 +42,14 @@ Todo esto asociado a un protocolo específico de comunicación.
 
 Los computadores pueden tener distintos roles dentro de la red, esto depende del tipo de aplicaciones que estén usando: 
 
-### Servidores (computadores que ejecutan aplicaciones servidoras)
+### Clientes (computadores que ejecutan aplicaciones clientts)
 
-Un computador que ejecuta una aplicación servidora, necesita una IP Pública y un puerto para ejecutar la aplicación. 
+Un computador que ejecuta una aplicación cliente, y que esta pueda efectivamente realizar operaciones en red se necesitan los siguientes elementos:
+
+1. Dirección IP del computador que ejecuta la Aplicación Servidora
+2. Puerto donde se ejecuta la aplicación servidora
+3. Protocolo de comunicación entre las aplicaciones Cliente-Servidor
+
+Con ésto podemos establecer el *SOCKET* desde el cual las aplicaciones operarán
 
 Puedes ver el archivo `socket-01.js` y `socket-02-msg.js`
